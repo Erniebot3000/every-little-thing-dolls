@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Little Thing For Dolls - Doll Care Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .header h1 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .button-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .diy-button {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .diy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .diy-button .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .diy-button h3 {
+            color: #c44569;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .diy-button p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .contact-button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(196, 69, 105, 0.4);
+            margin-top: 10px;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(196, 69, 105, 0.5);
+        }
+        
+        .contact-button .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-button h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        
+        .contact-button p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 50px 20px;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h2 {
+            color: #c44569;
+            font-size: 24px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .modal-body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .modal-body h3 {
+            color: #c44569;
+            margin: 20px 0 10px 0;
+            font-size: 18px;
+        }
+        
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+        
+        .tip-box {
+            background: #ffe0e6;
+            border-left: 4px solid #c44569;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .contact-info {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h3 {
+            color: #c44569;
+            margin-bottom: 15px;
+        }
+        
+        .phone-btn {
+            display: inline-block;
+            background: #c44569;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .address {
+            margin-top: 15px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>👗 Every Little Thing For Dolls</h1>
+            <p>Doll Care & Style Guide</p>
+        </div>
+        
+        <div class="button-grid">
+            <button class="diy-button" onclick="openModal('doll-care')">
+                <div class="icon">🧸</div>
+                <h3>Doll Care Basics</h3>
+                <p>How to keep your doll looking beautiful for years</p>
+            </button>
+            
+            <button class="diy-button" onclick="openModal('outfit-ideas')">
+                <div class="icon">👚</div>
+                <h3>Outfit Ideas</h3>
+                <p>Mix and match tips for endless style combinations</p>
+            </button>
+            
+            <button class="diy-button" onclick="openModal('storage')">
+                <div class="icon">📦</div>
+                <h3>Smart Storage</h3>
+                <p>Organize clothes and accessories without the clutter</p>
+            </button>
+            
+            <button class="diy-button" onclick="openModal('cleaning')">
+                <div class="icon">✨</div>
+                <h3>Gentle Cleaning</h3>
+                <p>Safe ways to clean doll clothes and accessories</p>
+            </button>
+            
+            <button class="diy-button" onclick="openModal('sizing')">
+                <div class="icon">📏</div>
+                <h3>Size Guide</h3>
+                <p>Understanding doll sizes and what fits what</p>
+            </button>
+            
+            <button class="contact-button" onclick="openModal('contact')">
+                <div class="icon">🛍️</div>
+                <h3>Shop Handmade Doll Clothes</h3>
+                <p>One-of-a-kind outfits for your special doll</p>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Modal for Doll Care -->
+    <div id="doll-care" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🧸 Doll Care Basics</h2>
+                <button class="close-btn" onclick="closeModal('doll-care')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Keep Your Doll Looking Beautiful</h3>
+                <ul>
+                    <li><strong>Brush hair gently</strong> — Use a wire wig brush, starting from the ends</li>
+                    <li><strong>Avoid direct sunlight</strong> — Prevents fading and material damage</li>
+                    <li><strong>Store properly</strong> — Keep in a cool, dry place away from moisture</li>
+                    <li><strong>Handle with clean hands</strong> — Oils and dirt can stain over time</li>
+                    <li><strong>Rotate outfits</strong> — Prevents fabric stress and color transfer</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>Pro Tip:</strong> For tangled hair, use a small amount of fabric softener mixed with water as a detangling spray.
+                </div>
+                
+                <h3>When to Seek Professional Help</h3>
+                <ul>
+                    <li>Loose limbs or broken joints</li>
+                    <li>Deep stains that won't come out</li>
+                    <li>Hair that's severely matted</li>
+                    <li>Missing or damaged eyes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Outfit Ideas -->
+    <div id="outfit-ideas" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👚 Outfit Ideas</h2>
+                <button class="close-btn" onclick="closeModal('outfit-ideas')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Endless Style Combinations</h3>
+                <ul>
+                    <li><strong>Layer pieces</strong> — Cardigans over dresses, vests over shirts</li>
+                    <li><strong>Mix patterns</strong> — Stripes with florals (keep colors complementary)</li>
+                    <li><strong>Accessorize</strong> — Hats, scarves, and jewelry transform any outfit</li>
+                    <li><strong>Seasonal themes</strong> — Pastels for spring, cozy knits for winter</li>
+                    <li><strong>Occasion dressing</strong> — Casual play clothes vs. special event outfits</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>Style Secret:</strong> Start with one statement piece (like a handmade dress) and build around it with simple accessories.
+                </div>
+                
+                <h3>Must-Have Basics</h3>
+                <ul>
+                    <li>2-3 versatile dresses</li>
+                    <li>Mix-and-match tops and bottoms</li>
+                    <li>One special occasion outfit</li>
+                    <li>Cozy pajamas and robe</li>
+                    <li>Seasonal outerwear</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Storage -->
+    <div id="storage" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📦 Smart Storage</h2>
+                <button class="close-btn" onclick="closeModal('storage')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Organize Without the Clutter</h3>
+                <ul>
+                    <li><strong>Shoe organizers</strong> — Over-the-door pockets are perfect for doll clothes</li>
+                    <li><strong>Small bins</strong> — Separate by category (tops, bottoms, dresses, accessories)</li>
+                    <li><strong>Drawer dividers</strong> — Keep small items like shoes and jewelry sorted</li>
+                    <li><strong>Hanging organizers</strong> — Use doll-sized hangers for dresses and coats</li>
+                    <li><strong>Clear containers</strong> — See everything at a glance</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>Space Saver:</strong> Store off-season clothes in labeled bins and rotate them quarterly.
+                </div>
+                
+                <h3>DIY Storage Solutions</h3>
+                <ul>
+                    <li>Shoe boxes covered in pretty paper</li>
+                    <li>Small baskets from dollar stores</li>
+                    <li>Repurpose mint tins for tiny accessories</li>
+                    <li>Hang a small curtain rod for doll hangers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Cleaning -->
+    <div id="cleaning" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✨ Gentle Cleaning</h2>
+                <button class="close-btn" onclick="closeModal('cleaning')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Safe Cleaning Methods</h3>
+                <ul>
+                    <li><strong>Spot clean first</strong> — Try a damp cloth before full washing</li>
+                    <li><strong>Use mild soap</strong> — Baby shampoo or gentle detergent only</li>
+                    <li><strong>Cold water</strong> — Hot water can shrink or fade fabrics</li>
+                    <li><strong>Air dry flat</strong> — Never use a dryer; reshape while damp</li>
+                    <li><strong>Test first</strong> — Check for colorfastness on a hidden area</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>Stain Removal:</strong> For tough stains, make a paste of baking soda and water, apply gently, let sit 15 minutes, then rinse.
+                </div>
+                
+                <h3>What NOT to Do</h3>
+                <ul>
+                    <li>Don't use bleach or harsh chemicals</li>
+                    <li>Don't wring or twist delicate fabrics</li>
+                    <li>Don't dry in direct sunlight</li>
+                    <li>Don't iron without a pressing cloth</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Sizing -->
+    <div id="sizing" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📏 Size Guide</h2>
+                <button class="close-btn" onclick="closeModal('sizing')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Understanding Doll Sizes</h3>
+                <ul>
+                    <li><strong>18 inch dolls</strong> — American Girl, Our Generation, My Life As</li>
+                    <li><strong>15 inch dolls</strong> — Bitty Baby, some baby dolls</li>
+                    <li><strong>8 inch dolls</strong> — Mini dolls, some collectible dolls</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>Size Check:</strong> Measure your doll from head to toe. Also measure chest, waist, and hips for best fit.
+                </div>
+                
+                <h3>Will It Fit?</h3>
+                <ul>
+                    <li>Check the seller's size chart</li>
+                    <li>Read reviews for fit feedback</li>
+                    <li>When in doubt, size up — easier to take in than let out</li>
+                    <li>Stretchy fabrics are more forgiving</li>
+                </ul>
+                
+                <h3>Every Little Thing For Dolls Sizing</h3>
+                <p>All our handmade clothes are designed to fit true to size for American Girl and similar 18" dolls. We also offer select styles for 15" and 8" dolls.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Contact -->
+    <div id="contact" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛍️ Every Little Thing For Dolls</h2>
+                <button class="close-btn" onclick="closeModal('contact')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="contact-info">
+                    <h3>Handmade With Love</h3>
+                    <p>One-of-a-kind doll clothes and accessories<br>for 18", 15", and 8" dolls</p>
+                    
+                    <a href="tel:+12697893005" class="phone-btn">📞 (269) 789-3005</a>
+                    
+                    <div class="address">
+                        <strong>Every Little Thing For Dolls</strong><br>
+                        452 Tullis Lane<br>
+                        Battle Creek, MI 49017
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 20px; background: #ffe0e6; border-radius: 10px;">
+                        <h4 style="color: #c44569; margin-bottom: 10px;">Why Choose Handmade?</h4>
+                        <ul style="text-align: left; color: #333;">
+                            <li>Unique, one-of-a-kind designs</li>
+                            <li>Quality craftsmanship</li>
+                            <li>Perfect fit guaranteed</li>
+                            <li>Made with attention to detail</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: #666; font-style: italic;">
+                        "Every doll deserves something special"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
